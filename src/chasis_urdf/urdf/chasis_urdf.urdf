@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="chasis_urdf">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-1.59349319575341E-05 -0.000403198248937114 0.164884480228516"
+        rpy="0 0 0" />
+      <mass
+        value="0.408631703851002" />
+      <inertia
+        ixx="0.00156695773909134"
+        ixy="-1.72231405828274E-08"
+        ixz="-1.91947046803438E-10"
+        iyy="0.00754203792430675"
+        iyz="-2.17504083896834E-10"
+        izz="0.00612890873923272" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="base_link">
+        <material>Gazebo/Gold</material>
+    </gazebo>
+  <link
+    name="front_left">
+    <inertial>
+      <origin
+        xyz="7.1456E-05 -0.020363 2.4702E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.023929" />
+      <inertia
+        ixx="4.3974E-06"
+        ixy="-1.4444E-08"
+        ixz="4.4573E-09"
+        iyy="6.347E-06"
+        iyz="-4.9729E-09"
+        izz="4.386E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/front_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/front_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="front_left">
+        <material>Gazebo/Black</material>
+    </gazebo>
+  <joint
+    name="front_left"
+    type="continuous">
+    <origin
+      xyz="0.18445 -0.0615 0.05"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_left" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="front_right">
+    <inertial>
+      <origin
+        xyz="7.4469E-05 -0.020363 1.3059E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.023929" />
+      <inertia
+        ixx="4.3985E-06"
+        ixy="-1.5049E-08"
+        ixz="2.4507E-09"
+        iyy="6.347E-06"
+        iyz="-2.6199E-09"
+        izz="4.3849E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/front_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/front_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="front_right">
+        <material>Gazebo/Black</material>
+    </gazebo>
+  <joint
+    name="front_right"
+    type="continuous">
+    <origin
+      xyz="-0.18445 -0.0615 0.05"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_right" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="back_left">
+    <inertial>
+      <origin
+        xyz="6.5483E-05 0.020363 -3.7823E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.023929" />
+      <inertia
+        ixx="4.3953E-06"
+        ixy="1.3227E-08"
+        ixz="-6.3062E-09"
+        iyy="6.3471E-06"
+        iyz="-7.6362E-09"
+        izz="4.3881E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/back_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/back_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="back_left">
+        <material>Gazebo/Black</material>
+    </gazebo>
+  <joint
+    name="back_left"
+    type="continuous">
+    <origin
+      xyz="0.18445 0.0615 0.05"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_left" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="back_right">
+    <inertial>
+      <origin
+        xyz="7.0522E-05 0.020363 -2.7281E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.023928" />
+      <inertia
+        ixx="4.3969E-06"
+        ixy="1.422E-08"
+        ixz="-4.803E-09"
+        iyy="6.347E-06"
+        iyz="-5.5648E-09"
+        izz="4.3863E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/back_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://chasis_urdf/meshes/back_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="back_right">
+        <material>Gazebo/Black</material>
+    </gazebo>
+  <joint
+    name="back_right"
+    type="continuous">
+    <origin
+      xyz="-0.18445 0.0615 0.05"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_right" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+</robot>

@@ -1,0 +1,29 @@
+digraph G {
+node [shape=box];
+"dummy" [label="dummy"];
+"center_link" [label="center_link"];
+"left_base_link" [label="left_base_link"];
+"left_1_Link" [label="left_1_Link"];
+"left_2_Link" [label="left_2_Link"];
+"left_3_Link" [label="left_3_Link"];
+"left_4_Link" [label="left_4_Link"];
+"left_5_Link" [label="left_5_Link"];
+"left_6_Link" [label="left_6_Link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"dummy" -> "dummy_center_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"dummy_center_joint" -> "center_link"
+"center_link" -> "left_base_joint" [label="xyz: 0 0.15 0.095 \nrpy: 0 -0 0"]
+"left_base_joint" -> "left_base_link"
+"left_base_link" -> "left_axis_joint_1" [label="xyz: -2.4327e-05 2.2695e-05 0.105 \nrpy: 0 -0 0"]
+"left_axis_joint_1" -> "left_1_Link"
+"left_1_Link" -> "left_axis_joint_2" [label="xyz: 0.080113 -2.2695e-05 0 \nrpy: 0 -0 0"]
+"left_axis_joint_2" -> "left_2_Link"
+"left_2_Link" -> "left_axis_joint_3" [label="xyz: 0 0 0.17447 \nrpy: 0 -0 0"]
+"left_axis_joint_3" -> "left_3_Link"
+"left_3_Link" -> "left_axis_joint_4" [label="xyz: -0.084516 0 0.17442 \nrpy: 0 -0 0"]
+"left_axis_joint_4" -> "left_4_Link"
+"left_4_Link" -> "left_axis_joint_5" [label="xyz: 0.080113 2.2695e-05 0 \nrpy: 0 -0 0"]
+"left_axis_joint_5" -> "left_5_Link"
+"left_5_Link" -> "left_axis_joint_6" [label="xyz: 0 -4.5391e-05 0.080089 \nrpy: 0 -0 0"]
+"left_axis_joint_6" -> "left_6_Link"
+}
