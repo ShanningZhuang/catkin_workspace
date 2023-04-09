@@ -1,0 +1,8 @@
+prefix=/home/s/Desktop/catkin_workspace/install
+
+Name: chasis_urdf
+Description: Description of chasis_urdf
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

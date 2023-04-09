@@ -1,0 +1,8 @@
+prefix=/home/s/Desktop/catkin_workspace/install
+
+Name: gluon_2l4_6l3
+Description: Description of gluon_2l4_6l3
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs geometry_msgs sensor_msgs

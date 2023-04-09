@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     <!--Constant define-->    
-    
-
     <!--single arm define-->
     <xacro:macro name="single_arm" params = "parent LandR x_loc y_loc z_loc row pitch yaw">
         <joint  name="${LandR}_base_joint"

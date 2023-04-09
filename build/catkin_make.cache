@@ -1,2 +1,2 @@
-
+chasis_urdf:dual_arm_moveit_config:dual_arm_moveit_config_2l4_6l3:gluon:gluon_2L4_6L3
 -DCATKIN_DEVEL_PREFIX=/home/s/Desktop/catkin_workspace/devel -DCMAKE_INSTALL_PREFIX=/home/s/Desktop/catkin_workspace/install -G Unix Makefiles
