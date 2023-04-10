@@ -1,0 +1,8 @@
+prefix=/home/s/Desktop/catkin_workspace/devel
+
+Name: dual_arm_2l4_6l3_moveit_config
+Description: Description of dual_arm_2l4_6l3_moveit_config
+Version: 0.3.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -131,11 +131,12 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/s/Desktop/catkin_workspace/build/gtest/cmake_install.cmake")
+  include("/home/s/Desktop/catkin_workspace/build/dual_arm_2l4_6l3_moveit_config/cmake_install.cmake")
   include("/home/s/Desktop/catkin_workspace/build/chasis_urdf/cmake_install.cmake")
   include("/home/s/Desktop/catkin_workspace/build/gluon/cmake_install.cmake")
   include("/home/s/Desktop/catkin_workspace/build/dual_arm_moveit_config/cmake_install.cmake")
   include("/home/s/Desktop/catkin_workspace/build/dual_arm_moveit_config_2l4_6l3/cmake_install.cmake")
-  include("/home/s/Desktop/catkin_workspace/build/gluon_2L4_6L3/cmake_install.cmake")
+  include("/home/s/Desktop/catkin_workspace/build/gluon_2l4_6l3/cmake_install.cmake")
 
 endif()
 

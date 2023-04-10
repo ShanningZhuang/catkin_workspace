@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: gluon_2l4_6l3
+    relative_path: urdf/dual_arm.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/dual_arm.srdf
+  CONFIG:
+    author_name: Zsn
+    author_email: shanning.zhuang@qq.com
+    generated_timestamp: 1681109879
