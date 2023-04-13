@@ -55,22 +55,24 @@ CMAKE_BINARY_DIR = /home/s/Desktop/catkin_workspace/build
 # The main recursive "all" target.
 all: gtest/all
 all: dual_arm_2l4_6l3_moveit_config/all
+all: moveit_learn/all
 all: chasis_urdf/all
 all: gluon/all
 all: dual_arm_moveit_config/all
-all: dual_arm_moveit_config_2l4_6l3/all
 all: gluon_2l4_6l3/all
+all: gluon_moveit_config/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
 preinstall: gtest/preinstall
 preinstall: dual_arm_2l4_6l3_moveit_config/preinstall
+preinstall: moveit_learn/preinstall
 preinstall: chasis_urdf/preinstall
 preinstall: gluon/preinstall
 preinstall: dual_arm_moveit_config/preinstall
-preinstall: dual_arm_moveit_config_2l4_6l3/preinstall
 preinstall: gluon_2l4_6l3/preinstall
+preinstall: gluon_moveit_config/preinstall
 
 .PHONY : preinstall
 
@@ -82,11 +84,12 @@ clean: CMakeFiles/tests.dir/clean
 clean: CMakeFiles/download_extra_data.dir/clean
 clean: gtest/clean
 clean: dual_arm_2l4_6l3_moveit_config/clean
+clean: moveit_learn/clean
 clean: chasis_urdf/clean
 clean: gluon/clean
 clean: dual_arm_moveit_config/clean
-clean: dual_arm_moveit_config_2l4_6l3/clean
 clean: gluon_2l4_6l3/clean
+clean: gluon_moveit_config/clean
 
 .PHONY : clean
 
@@ -143,24 +146,6 @@ dual_arm_moveit_config/preinstall:
 dual_arm_moveit_config/clean:
 
 .PHONY : dual_arm_moveit_config/clean
-
-#=============================================================================
-# Directory level rules for directory dual_arm_moveit_config_2l4_6l3
-
-# Recursive "all" directory target.
-dual_arm_moveit_config_2l4_6l3/all:
-
-.PHONY : dual_arm_moveit_config_2l4_6l3/all
-
-# Recursive "preinstall" directory target.
-dual_arm_moveit_config_2l4_6l3/preinstall:
-
-.PHONY : dual_arm_moveit_config_2l4_6l3/preinstall
-
-# Recursive "clean" directory target.
-dual_arm_moveit_config_2l4_6l3/clean:
-
-.PHONY : dual_arm_moveit_config_2l4_6l3/clean
 
 #=============================================================================
 # Directory level rules for directory gluon
@@ -273,6 +258,24 @@ gluon_2l4_6l3/clean: gluon_2l4_6l3/CMakeFiles/gluon_2l4_6l3_node.dir/clean
 .PHONY : gluon_2l4_6l3/clean
 
 #=============================================================================
+# Directory level rules for directory gluon_moveit_config
+
+# Recursive "all" directory target.
+gluon_moveit_config/all:
+
+.PHONY : gluon_moveit_config/all
+
+# Recursive "preinstall" directory target.
+gluon_moveit_config/preinstall:
+
+.PHONY : gluon_moveit_config/preinstall
+
+# Recursive "clean" directory target.
+gluon_moveit_config/clean:
+
+.PHONY : gluon_moveit_config/clean
+
+#=============================================================================
 # Directory level rules for directory gtest
 
 # Recursive "all" directory target.
@@ -328,6 +331,24 @@ gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest_main.dir/clean
 gtest/googletest/clean: gtest/googletest/CMakeFiles/gtest.dir/clean
 
 .PHONY : gtest/googletest/clean
+
+#=============================================================================
+# Directory level rules for directory moveit_learn
+
+# Recursive "all" directory target.
+moveit_learn/all:
+
+.PHONY : moveit_learn/all
+
+# Recursive "preinstall" directory target.
+moveit_learn/preinstall:
+
+.PHONY : moveit_learn/preinstall
+
+# Recursive "clean" directory target.
+moveit_learn/clean:
+
+.PHONY : moveit_learn/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/doxygen.dir
