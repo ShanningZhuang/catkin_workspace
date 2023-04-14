@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="dual_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="dual_arm_vacuum" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <!--Constant define-->    
     <xacro:property name="M_PI" value="3.14159"/>
     <xacro:property name="Arm_z_high" value="0.095"/>
     <xacro:property name="Arm_y_place" value="0"/>
     <xacro:property name="Arm_x_offset" value="0.075"/>
     <!--import arm-->    
-    <xacro:include filename="$(find gluon_2l4_6l3)/urdf/single_arm.xacro" />
+    <xacro:include filename="$(find gluon_2l4_6l3)/urdf/single_arm_vacuum.xacro" />
     <!--base define-->
     <link name="world">
     </link>    
@@ -72,10 +72,10 @@
       </collision>
     </link>
     <!--left define-->
-    <xacro:single_arm parent="base_link" LandR="left"
+    <xacro:single_arm_vacuum parent="base_link" LandR="left"
     x_loc="-${Arm_x_offset}" y_loc="${Arm_y_place}" z_loc="${Arm_z_high}"
     row="-${M_PI/2}" pitch="0" yaw="${M_PI/2}"/>
-    <xacro:single_arm parent="base_link" LandR="right"
+    <xacro:single_arm_vacuum parent="base_link" LandR="right"
     x_loc="${Arm_x_offset}" y_loc="${Arm_y_place}" z_loc="${Arm_z_high}"
     row="${M_PI/2}" pitch="0" yaw="${M_PI/2}"/>
 

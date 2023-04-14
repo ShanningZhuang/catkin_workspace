@@ -3,7 +3,7 @@
     <!--Constant define-->    
 
     <!--single arm define-->
-    <xacro:macro name="single_arm" params = "parent LandR x_loc y_loc z_loc row pitch yaw">
+    <xacro:macro name="single_arm_vacuum" params = "parent LandR x_loc y_loc z_loc row pitch yaw">
         <joint  name="${LandR}_base_joint"
             type="fixed">
             <origin
@@ -475,5 +475,166 @@
                   <mechanicalReduction>1</mechanicalReduction>
               </actuator>
           </transmission>
+        <joint name="${LandR}_ee_fixed_joint" type="fixed">
+        <parent link="${LandR}_6_Link" />
+        <child link = "${LandR}_ee_link" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        </joint>
+        <link name="${LandR}_ee_link">
+        <collision>
+            <geometry>
+            <box size="0.01 0.01 0.01"/>
+            </geometry>
+            <surface>
+            <friction>
+                <ode>
+                <mu>10</mu>
+                <mu2>10</mu2>
+                </ode>
+            </friction>
+            </surface>
+            <origin rpy="0 0 0" xyz="-0.01 0 0"/>
+        </collision>
+        </link>
+        <link name="${LandR}_vacuum_gripper">
+        <gravity>0</gravity>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+            <cylinder radius="0.005" length="0.01"/>
+            </geometry>
+            <material name="transparent">
+            <color rgba="0 0 0 0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
+            <mass value="0.0001"/>
+            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+        </inertial>
+        </link>
+        <joint name="${LandR}_gripper_joint" type="revolute">
+        <axis xyz="1 0 0" />
+        <parent link="${LandR}_ee_link" />
+        <child link="${LandR}_vacuum_gripper" />
+        <origin rpy="0 1.5708 0" xyz="0.01 0.0125 0" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+        </joint>
+        <gazebo>
+            <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
+                <robotNamespace>/${LandR}_gvacuum_gripper</robotNamespace>
+                <bodyName>vacuum_gripper</bodyName>
+                <topicName>grasping</topicName>
+                <maxForce>50</maxForce>
+                <maxDistance>0.05</maxDistance>
+                <minDistance>0.01</minDistance>
+            </plugin>
+        </gazebo>
+        <link name="${LandR}_vacuum_gripper1">
+        <gravity>0</gravity>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+            <cylinder radius="0.005" length="0.01"/>
+            </geometry>
+            <material name="transparent">
+            <color rgba="0 0 0 0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
+            <mass value="0.0001"/>
+            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+        </inertial>
+        </link>
+        <joint name="${LandR}_gripper_joint1" type="revolute">
+        <axis xyz="1 0 0" />
+        <parent link="${LandR}_ee_link" />
+        <child link="${LandR}_vacuum_gripper1" />
+        <origin rpy="0 1.5708 0" xyz="0.01 -0.0125 0" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+        </joint>
+        <gazebo>
+            <plugin name="gazebo_ros_vacuum_gripper1" filename="libgazebo_ros_vacuum_gripper.so">
+                <robotNamespace>/${LandR}_gvacuum_gripper1</robotNamespace>
+                <bodyName>${LandR}_vacuum_gripper1</bodyName>
+                <topicName>grasping1</topicName>
+                <maxForce>50</maxForce>
+                <maxDistance>0.05</maxDistance>
+                <minDistance>0.01</minDistance>
+            </plugin>
+        </gazebo>
+        <link name="${LandR}_vacuum_gripper2">
+        <gravity>0</gravity>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+            <cylinder radius="0.005" length="0.01"/>
+            </geometry>
+            <material name="transparent">
+            <color rgba="0 0 0 0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
+            <mass value="0.0001"/>
+            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+        </inertial>
+        </link>
+        <joint name="${LandR}_gripper_joint2" type="revolute">
+        <axis xyz="1 0 0" />
+        <parent link="${LandR}_ee_link" />
+        <child link="${LandR}_vacuum_gripper2" />
+        <origin rpy="0 1.5708 0" xyz="0.01 0 0.0125" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+        </joint>
+        <gazebo>
+            <plugin name="gazebo_ros_vacuum_gripper2" filename="libgazebo_ros_vacuum_gripper.so">
+                <robotNamespace>/${LandR}_gvacuum_gripper2</robotNamespace>
+                <bodyName>${LandR}_vacuum_gripper2</bodyName>
+                <topicName>grasping2</topicName>
+                <maxForce>50</maxForce>
+                <maxDistance>0.05</maxDistance>
+                <minDistance>0.01</minDistance>
+            </plugin>
+        </gazebo>
+        <link name="${LandR}_vacuum_gripper3">
+        <gravity>0</gravity>
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+            <cylinder radius="0.005" length="0.01"/>
+            </geometry>
+            <material name="transparent">
+            <color rgba="0 0 0 0"/>
+            </material>
+        </visual>
+        <inertial>
+            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
+            <mass value="0.0001"/>
+            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+        </inertial>
+        </link>
+        <joint name="${LandR}_gripper_joint3" type="revolute">
+        <axis xyz="1 0 0" />
+        <parent link="${LandR}_ee_link" />
+        <child link="${LandR}_vacuum_gripper3" />
+        <origin rpy="0 1.5708 0" xyz="0.01 0 -0.0125" />
+        <limit effort="50" velocity="50" lower="0" upper="0" />
+        <dynamics damping="0.0" friction="10"/>
+        </joint>
+        <gazebo>
+            <plugin name="gazebo_ros_vacuum_gripper3" filename="libgazebo_ros_vacuum_gripper.so">
+                <robotNamespace>/${LandR}_gvacuum_gripper3</robotNamespace>
+                <bodyName>${LandR}_vacuum_gripper3</bodyName>
+                <topicName>grasping2</topicName>
+                <maxForce>50</maxForce>
+                <maxDistance>0.05</maxDistance>
+                <minDistance>0.01</minDistance>
+            </plugin>
+        </gazebo>
     </xacro:macro>
 </robot>
