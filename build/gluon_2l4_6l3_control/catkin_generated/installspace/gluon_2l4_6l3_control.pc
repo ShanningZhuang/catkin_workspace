@@ -1,0 +1,8 @@
+prefix=/home/s/Desktop/catkin_workspace/install
+
+Name: gluon_2l4_6l3_control
+Description: Description of gluon_2l4_6l3_control
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

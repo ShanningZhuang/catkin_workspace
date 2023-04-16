@@ -22,7 +22,7 @@ class MoveItIkDemo:
                 
         # 获取终端link的名称
         end_effector_link = left_arm.get_end_effector_link()
-                        
+        print(end_effector_link)                
         # 设置目标位置所使用的参考坐标系
         reference_frame = 'world'
         left_arm.set_pose_reference_frame(reference_frame)
@@ -44,13 +44,13 @@ class MoveItIkDemo:
         target_pose = PoseStamped()
         target_pose.header.frame_id = reference_frame
         target_pose.header.stamp = rospy.Time.now()     
-        target_pose.pose.position.x = 0.191995
-        target_pose.pose.position.y = 0.213868
-        target_pose.pose.position.z = 0.520436
-        target_pose.pose.orientation.x = 0.911822
-        target_pose.pose.orientation.y = -0.0269758
-        target_pose.pose.orientation.z = 0.285694
-        target_pose.pose.orientation.w = -0.293653
+        target_pose.pose.position.x = -0.569552
+        target_pose.pose.position.y = 0.0655128
+        target_pose.pose.position.z = 0.981531
+        target_pose.pose.orientation.x = 0
+        target_pose.pose.orientation.y = 0.707256
+        target_pose.pose.orientation.z = -0.706958
+        target_pose.pose.orientation.w = 0
         
         # 设置机器臂当前的状态作为运动初始状态
         left_arm.set_start_state_to_current_state()
@@ -59,8 +59,8 @@ class MoveItIkDemo:
         left_arm.set_pose_target(target_pose, end_effector_link)
         
         # 规划运动路径
-        traj = left_arm.plan()
-        
+        traj,fraction = left_arm.plan()
+        print(traj)
         # 按照规划的运动路径控制机械臂运动
         left_arm.execute(traj)
         rospy.sleep(1)

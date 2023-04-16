@@ -6,6 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1
+        - /TF1
+        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -51,7 +54,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 0.8999999761581421
+    - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -204,27 +207,27 @@ Visualization Manager:
       Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
         base_link:
-          Value: true
+          Value: false
         dummy:
-          Value: true
+          Value: false
         left_1_Link:
-          Value: true
+          Value: false
         left_2_Link:
-          Value: true
+          Value: false
         left_3_Link:
-          Value: true
+          Value: false
         left_4_Link:
-          Value: true
+          Value: false
         left_5_Link:
-          Value: true
+          Value: false
         left_6_Link:
           Value: true
         left_base_link:
-          Value: true
+          Value: false
         left_ee_link:
-          Value: true
+          Value: false
         left_vacuum_gripper:
           Value: true
         left_vacuum_gripper1:
@@ -234,33 +237,33 @@ Visualization Manager:
         left_vacuum_gripper3:
           Value: true
         right_1_Link:
-          Value: true
+          Value: false
         right_2_Link:
-          Value: true
+          Value: false
         right_3_Link:
-          Value: true
+          Value: false
         right_4_Link:
-          Value: true
+          Value: false
         right_5_Link:
-          Value: true
+          Value: false
         right_6_Link:
-          Value: true
+          Value: false
         right_base_link:
-          Value: true
+          Value: false
         right_ee_link:
-          Value: true
+          Value: false
         right_vacuum_gripper:
-          Value: true
+          Value: false
         right_vacuum_gripper1:
-          Value: true
+          Value: false
         right_vacuum_gripper2:
-          Value: true
+          Value: false
         right_vacuum_gripper3:
-          Value: true
+          Value: false
         world:
-          Value: true
+          Value: false
       Marker Alpha: 1
-      Marker Scale: 1
+      Marker Scale: 0.10000000149011612
       Name: TF
       Show Arrows: true
       Show Axes: true
@@ -331,7 +334,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.8979061841964722
+      Distance: 0.6061292886734009
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -339,17 +342,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
+        X: -0.7311227917671204
+        Y: -0.018712781369686127
+        Z: 0.9196351170539856
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.06539785861969
+      Pitch: 0.9003978967666626
       Target Frame: <Fixed Frame>
-      Yaw: 2.8853979110717773
+      Yaw: 0.9053953886032104
     Saved: ~
 Window Geometry:
   Displays:
@@ -368,4 +371,4 @@ Window Geometry:
     collapsed: false
   Width: 1200
   X: 648
-  Y: 181
+  Y: 144

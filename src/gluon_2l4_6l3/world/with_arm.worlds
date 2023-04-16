@@ -1,0 +1,1632 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='dual_arm_vacuum'>
+      <joint name='world_fix' type='fixed'>
+        <pose relative_to='__model__'>0 0 0.1 0 -0 0</pose>
+        <parent>world</parent>
+        <child>dummy</child>
+      </joint>
+      <link name='dummy'>
+        <pose relative_to='world_fix'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0 -4.5e-05 1.07962 0 -0 0</pose>
+          <mass>2.98375</mass>
+          <inertia>
+            <ixx>0.0132145</ixx>
+            <ixy>-2.65396e-09</ixy>
+            <ixz>-3.60251e-07</ixz>
+            <iyy>0.0355405</iyy>
+            <iyz>2.0645e-06</iyz>
+            <izz>0.0329151</izz>
+          </inertia>
+        </inertial>
+        <collision name='dummy_fixed_joint_lump__base_link_collision'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/center_link.STL</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='dummy_fixed_joint_lump__left_base_link_collision_1'>
+          <pose>-0.075 0 1.095 -1.57079 -0 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='dummy_fixed_joint_lump__right_base_link_collision_2'>
+          <pose>0.075 0 1.095 1.57079 -0 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='dummy_fixed_joint_lump__base_link_visual'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/center_link.STL</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='dummy_fixed_joint_lump__left_base_link_visual_1'>
+          <pose>-0.075 0 1.095 -1.57079 -0 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='dummy_fixed_joint_lump__right_base_link_visual_2'>
+          <pose>0.075 0 1.095 1.57079 -0 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/base_link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_axis_joint_1' type='revolute'>
+        <pose relative_to='dummy'>-0.1955 0 1.09502 -1.57079 -0 1.57079</pose>
+        <parent>dummy</parent>
+        <child>left_1_Link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>60</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_1_Link'>
+        <pose relative_to='left_axis_joint_1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.013618 1e-06 -0.008917 0 -0 0</pose>
+          <mass>0.427788</mass>
+          <inertia>
+            <ixx>0.000328336</ixx>
+            <ixy>1.39943e-08</ixy>
+            <ixz>-4.96625e-05</ixz>
+            <iyy>0.000349499</iyy>
+            <iyz>7.16862e-09</iyz>
+            <izz>0.000398779</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_1_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/1_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_1_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/1_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_axis_joint_2' type='revolute'>
+        <pose relative_to='left_1_Link'>0.1165 0 0 -1.5708 -1.5706 -1.5708</pose>
+        <parent>left_1_Link</parent>
+        <child>left_2_Link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.54</lower>
+            <upper>1.54</upper>
+            <effort>60</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_2_Link'>
+        <pose relative_to='left_axis_joint_2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.028248 0 -0.009964 0 -0 0</pose>
+          <mass>0.474122</mass>
+          <inertia>
+            <ixx>0.000348141</ixx>
+            <ixy>6.62975e-09</ixy>
+            <ixz>-3.65185e-05</ixz>
+            <iyy>0.000363227</iyy>
+            <iyz>-1.49822e-08</iyz>
+            <izz>0.000417325</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_2_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/2_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_2_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/2_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_axis_joint_3' type='revolute'>
+        <pose relative_to='left_2_Link'>0.20352 2.3e-05 0.03825 -0.000393 0 0</pose>
+        <parent>left_2_Link</parent>
+        <child>left_3_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_3_Link'>
+        <pose relative_to='left_axis_joint_3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.055 1e-05 -0.087382 0 -0 0</pose>
+          <mass>0.150736</mass>
+          <inertia>
+            <ixx>6.48443e-05</ixx>
+            <ixy>-7.3799e-09</ixy>
+            <ixz>-1.63575e-07</ixz>
+            <iyy>7.51776e-05</iyy>
+            <iyz>-6.30391e-09</iyz>
+            <izz>8.1443e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_3_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/3_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_3_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/3_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_axis_joint_4' type='revolute'>
+        <pose relative_to='left_3_Link'>0.173 1.6e-05 -0.1557 -3.1412 0 0</pose>
+        <parent>left_3_Link</parent>
+        <child>left_4_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_4_Link'>
+        <pose relative_to='left_axis_joint_4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.003168 -2.5e-05 -0.065763 0 -0 0</pose>
+          <mass>0.086824</mass>
+          <inertia>
+            <ixx>3.69273e-05</ixx>
+            <ixy>-7.74428e-09</ixy>
+            <ixz>6.58228e-06</ixz>
+            <iyy>3.88095e-05</iyy>
+            <iyz>-3.86379e-09</iyz>
+            <izz>4.25313e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_4_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/4_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_4_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/4_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_axis_joint_5' type='revolute'>
+        <pose relative_to='left_4_Link'>0 0 -0.11743 7e-06 1.57079 3.14159</pose>
+        <parent>left_4_Link</parent>
+        <child>left_5_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_5_Link'>
+        <pose relative_to='left_axis_joint_5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.003013 2.5e-05 -0.027158 0 -0 0</pose>
+          <mass>0.086122</mass>
+          <inertia>
+            <ixx>3.6613e-05</ixx>
+            <ixy>-7.69518e-09</ixy>
+            <ixz>6.39795e-06</ixz>
+            <iyy>3.8151e-05</iyy>
+            <iyz>3.73716e-09</iyz>
+            <izz>4.20199e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_5_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/5_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_5_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/5_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_axis_joint_6' type='revolute'>
+        <pose relative_to='left_5_Link'>0.019524 2.3e-05 -0.079176 -0.000393 1.57079 3.14159</pose>
+        <parent>left_5_Link</parent>
+        <child>left_6_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_6_Link'>
+        <pose relative_to='left_axis_joint_6'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>2.4e-05 1.8e-05 0.028256 0 -0 0</pose>
+          <mass>0.0351435</mass>
+          <inertia>
+            <ixx>2.08979e-05</ixx>
+            <ixy>-1.52881e-08</ixy>
+            <ixz>-7.43298e-09</ixz>
+            <iyy>2.19492e-05</iyy>
+            <iyz>1.2043e-08</iyz>
+            <izz>3.34884e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_6_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/6_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='left_6_Link_fixed_joint_lump__left_ee_link_collision_1'>
+          <pose>0 0 -0.015 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.04 0.04 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_6_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/6_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='left_6_Link_fixed_joint_lump__left_ee_link_visual_1'>
+          <pose>0 0 -0.015 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.04 0.04 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_gripper_joint' type='revolute'>
+        <pose relative_to='left_6_Link'>0 0 -0.025 0 -0 0</pose>
+        <parent>left_6_Link</parent>
+        <child>left_vacuum_gripper</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+            <effort>50</effort>
+            <velocity>50</velocity>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>10</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_vacuum_gripper'>
+        <pose relative_to='left_gripper_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>1e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1e-08</izz>
+          </inertia>
+        </inertial>
+        <visual name='left_vacuum_gripper_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.01</length>
+              <radius>0.005</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_axis_joint_1' type='revolute'>
+        <pose relative_to='dummy'>0.1955 -0 1.09498 1.57079 -0 1.57079</pose>
+        <parent>dummy</parent>
+        <child>right_1_Link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>60</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_1_Link'>
+        <pose relative_to='right_axis_joint_1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.013618 1e-06 -0.008917 0 -0 0</pose>
+          <mass>0.427788</mass>
+          <inertia>
+            <ixx>0.000328336</ixx>
+            <ixy>1.39943e-08</ixy>
+            <ixz>-4.96625e-05</ixz>
+            <iyy>0.000349499</iyy>
+            <iyz>7.16862e-09</iyz>
+            <izz>0.000398779</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_1_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/1_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_1_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/1_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_axis_joint_2' type='revolute'>
+        <pose relative_to='right_1_Link'>0.1165 0 0 -1.5708 -1.5706 -1.5708</pose>
+        <parent>right_1_Link</parent>
+        <child>right_2_Link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1.54</lower>
+            <upper>1.54</upper>
+            <effort>60</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_2_Link'>
+        <pose relative_to='right_axis_joint_2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.028248 0 -0.009964 0 -0 0</pose>
+          <mass>0.474122</mass>
+          <inertia>
+            <ixx>0.000348141</ixx>
+            <ixy>6.62975e-09</ixy>
+            <ixz>-3.65185e-05</ixz>
+            <iyy>0.000363227</iyy>
+            <iyz>-1.49822e-08</iyz>
+            <izz>0.000417325</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_2_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/2_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_2_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/2_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_axis_joint_3' type='revolute'>
+        <pose relative_to='right_2_Link'>0.20352 2.3e-05 0.03825 -0.000393 0 0</pose>
+        <parent>right_2_Link</parent>
+        <child>right_3_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_3_Link'>
+        <pose relative_to='right_axis_joint_3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.055 1e-05 -0.087382 0 -0 0</pose>
+          <mass>0.150736</mass>
+          <inertia>
+            <ixx>6.48443e-05</ixx>
+            <ixy>-7.3799e-09</ixy>
+            <ixz>-1.63575e-07</ixz>
+            <iyy>7.51776e-05</iyy>
+            <iyz>-6.30391e-09</iyz>
+            <izz>8.1443e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_3_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/3_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_3_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/3_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_axis_joint_4' type='revolute'>
+        <pose relative_to='right_3_Link'>0.173 1.6e-05 -0.1557 -3.1412 0 0</pose>
+        <parent>right_3_Link</parent>
+        <child>right_4_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_4_Link'>
+        <pose relative_to='right_axis_joint_4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.003168 -2.5e-05 -0.065763 0 -0 0</pose>
+          <mass>0.086824</mass>
+          <inertia>
+            <ixx>3.69273e-05</ixx>
+            <ixy>-7.74428e-09</ixy>
+            <ixz>6.58228e-06</ixz>
+            <iyy>3.88095e-05</iyy>
+            <iyz>-3.86379e-09</iyz>
+            <izz>4.25313e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_4_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/4_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_4_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/4_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_axis_joint_5' type='revolute'>
+        <pose relative_to='right_4_Link'>0 0 -0.11743 7e-06 1.57079 3.14159</pose>
+        <parent>right_4_Link</parent>
+        <child>right_5_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_5_Link'>
+        <pose relative_to='right_axis_joint_5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.003013 2.5e-05 -0.027158 0 -0 0</pose>
+          <mass>0.086122</mass>
+          <inertia>
+            <ixx>3.6613e-05</ixx>
+            <ixy>-7.69518e-09</ixy>
+            <ixz>6.39795e-06</ixz>
+            <iyy>3.8151e-05</iyy>
+            <iyz>3.73716e-09</iyz>
+            <izz>4.20199e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_5_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/5_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_5_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/5_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_axis_joint_6' type='revolute'>
+        <pose relative_to='right_5_Link'>0.019524 2.3e-05 -0.079176 -0.000393 1.57079 3.14159</pose>
+        <parent>right_5_Link</parent>
+        <child>right_6_Link</child>
+        <axis>
+          <xyz>0 0 -1</xyz>
+          <limit>
+            <lower>-2.79</lower>
+            <upper>2.79</upper>
+            <effort>30</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_6_Link'>
+        <pose relative_to='right_axis_joint_6'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>2.4e-05 1.8e-05 0.028256 0 -0 0</pose>
+          <mass>0.0351435</mass>
+          <inertia>
+            <ixx>2.08979e-05</ixx>
+            <ixy>-1.52881e-08</ixy>
+            <ixz>-7.43298e-09</ixz>
+            <iyy>2.19492e-05</iyy>
+            <iyz>1.2043e-08</iyz>
+            <izz>3.34884e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_6_Link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/6_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='right_6_Link_fixed_joint_lump__right_ee_link_collision_1'>
+          <pose>0 0 -0.015 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.04 0.04 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_6_Link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/s/Desktop/catkin_workspace/src/gluon_2l4_6l3/meshes/6_Link.STL</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <visual name='right_6_Link_fixed_joint_lump__right_ee_link_visual_1'>
+          <pose>0 0 -0.015 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.04 0.04 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_gripper_joint' type='revolute'>
+        <pose relative_to='right_6_Link'>0 0 -0.025 0 -0 0</pose>
+        <parent>right_6_Link</parent>
+        <child>right_vacuum_gripper</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0</upper>
+            <effort>50</effort>
+            <velocity>50</velocity>
+          </limit>
+          <dynamics>
+            <damping>0</damping>
+            <friction>10</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_vacuum_gripper'>
+        <pose relative_to='right_gripper_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.0001</mass>
+          <inertia>
+            <ixx>1e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1e-08</izz>
+          </inertia>
+        </inertial>
+        <visual name='right_vacuum_gripper_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <length>0.01</length>
+              <radius>0.005</radius>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/White</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='gazebo_ros_vacuum_gripper' filename='libgazebo_ros_vacuum_gripper.so'>
+        <robotNamespace>/Walles/left_vacuum_gripper</robotNamespace>
+        <bodyName>left_vacuum_gripper</bodyName>
+        <topicName>grasping</topicName>
+        <maxForce>5000</maxForce>
+        <maxDistance>0.05</maxDistance>
+        <minDistance>0.01</minDistance>
+      </plugin>
+      <plugin name='gazebo_ros_vacuum_gripper' filename='libgazebo_ros_vacuum_gripper.so'>
+        <robotNamespace>/Walles/right_vacuum_gripper</robotNamespace>
+        <bodyName>right_vacuum_gripper</bodyName>
+        <topicName>grasping</topicName>
+        <maxForce>5000</maxForce>
+        <maxDistance>0.05</maxDistance>
+        <minDistance>0.01</minDistance>
+      </plugin>
+      <static>0</static>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/</robotNamespace>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>97 858000000</sim_time>
+      <real_time>99 154760826</real_time>
+      <wall_time>1681542783 267641997</wall_time>
+      <iterations>97858</iterations>
+      <model name='BigBox'>
+        <pose>-0.110513 0.309051 0.433483 0 1e-05 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-0.110513 0.309051 0.433483 0 1e-05 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Box'>
+        <pose>0.021346 0.361942 1.03348 1.4e-05 -2.4e-05 4e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='link_3'>
+          <pose>0.021346 0.361942 1.03348 1.4e-05 -2.4e-05 4e-06</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -0.0784 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='dual_arm_vacuum'>
+        <pose>0 1e-06 0 1e-06 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='dummy'>
+          <pose>0 1e-06 0.1 1e-06 -0 0</pose>
+          <velocity>0 -0 -0 -0 -0 -0</velocity>
+          <acceleration>-0 0 -0 0 -1e-06 -6e-06</acceleration>
+          <wrench>-1e-06 0 -0 0 -0 0</wrench>
+        </link>
+        <link name='left_1_Link'>
+          <pose>-0.1955 0 1.19502 -1.57093 8.5e-05 1.57079</pose>
+          <velocity>0 -0 0 -0.001164 0 0</velocity>
+          <acceleration>6e-06 -5e-06 0 -0.0001 1.6e-05 0.000887</acceleration>
+          <wrench>3e-06 -2e-06 0 0 -0 0</wrench>
+        </link>
+        <link name='left_2_Link'>
+          <pose>-0.195499 0.1165 1.19501 1.57089 -5.6e-05 3.14159</pose>
+          <velocity>-0 0 -0.000136 -0.001164 -0.010683 0</velocity>
+          <acceleration>-0.000551 5.8e-05 0 -8.1e-05 9e-06 0.000886</acceleration>
+          <wrench>-0.000261 2.7e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='left_3_Link'>
+          <pose>-0.399019 0.154751 1.19503 1.5706 -7.3e-05 3.14159</pose>
+          <velocity>-0 0 -0.002354 -0.001164 -0.0336 -7e-06</velocity>
+          <acceleration>-0.001073 0.000106 1e-06 7e-06 -0 -0.001099</acceleration>
+          <wrench>-0.000162 1.6e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='left_4_Link'>
+          <pose>-0.57202 -0.000948 1.19502 -1.57061 -7.3e-05 3.14159</pose>
+          <velocity>-1e-06 1e-06 -0.007986 -0.001164 -0.038746 -6e-06</velocity>
+          <acceleration>-0.000364 0.000649 0 -0.00013 2e-05 -0.000303</acceleration>
+          <wrench>-3.2e-05 5.6e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='left_5_Link'>
+          <pose>-0.572019 0.116482 1.195 1.57088 0.000186 1.57078</pose>
+          <velocity>1e-06 1e-06 -0.008123 0.000954 -0.038746 -6e-06</velocity>
+          <acceleration>-0.000163 0.000818 0 -8.7e-05 1.4e-05 -0.000143</acceleration>
+          <wrench>-1.4e-05 7e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='left_6_Link'>
+          <pose>-0.651195 0.136007 1.19502 -1.57099 -8.1e-05 3.14159</pose>
+          <velocity>0 2e-06 -0.011172 0.000954 -0.038643 -6e-06</velocity>
+          <acceleration>-0.0005 0.000851 0 2e-06 -1e-06 -0.000962</acceleration>
+          <wrench>-1.8e-05 3e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='left_vacuum_gripper'>
+          <pose>-0.651195 0.161007 1.19503 -1.57099 -8.1e-05 3.14159</pose>
+          <velocity>0 2e-06 -0.011148 0.000954 -0.038643 -6e-06</velocity>
+          <acceleration>-0.000136 0.000857 0 4e-06 -1e-06 -0.000685</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
+        </link>
+        <link name='right_1_Link'>
+          <pose>0.1955 -0 1.19498 1.57076 -2.3e-05 1.57079</pose>
+          <velocity>0 -0 0 0.001825 -0 0</velocity>
+          <acceleration>7e-06 -9e-06 0 2.3e-05 2e-06 -0.000217</acceleration>
+          <wrench>3e-06 -4e-06 0 0 -0 0</wrench>
+        </link>
+        <link name='right_2_Link'>
+          <pose>0.195501 0.1165 1.19498 -1.57084 0.000153 -6e-06</pose>
+          <velocity>0 -0 0.000213 0.001825 0.021402 -1e-06</velocity>
+          <acceleration>6.7e-05 -6.3e-05 0 -4.7e-05 -6e-06 0.000407</acceleration>
+          <wrench>3.2e-05 -3e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='right_3_Link'>
+          <pose>0.399021 0.154749 1.19488 -1.57126 0.000191 -6e-06</pose>
+          <velocity>-2e-06 -0 -0.004073 0.001825 0.030287 -5e-06</velocity>
+          <acceleration>-0.000239 -0.000189 0 -3e-06 -1e-06 0.001318</acceleration>
+          <wrench>-3.6e-05 -2.9e-05 0 0 -0 0</wrench>
+        </link>
+        <link name='right_4_Link'>
+          <pose>0.57202 -0.000952 1.19487 1.57077 0.000269 -6e-06</pose>
+          <velocity>-3e-06 -1e-06 -0.009597 0.001825 0.065286 -6e-06</velocity>
+          <acceleration>-0.000116 -9.7e-05 -0 0.000624 9.7e-05 0.002233</acceleration>
+          <wrench>-1e-05 -8e-06 -0 0 -0 0</wrench>
+        </link>
+        <link name='right_5_Link'>
+          <pose>0.572021 0.116478 1.19486 -1.5705 3e-05 1.5708</pose>
+          <velocity>-3e-06 -1e-06 -0.009383 -0.015686 0.065286 -3e-06</velocity>
+          <acceleration>-9.5e-05 -0.000151 -0 0.000328 6e-05 0.000667</acceleration>
+          <wrench>-8e-06 -1.3e-05 -0 0 -0 0</wrench>
+        </link>
+        <link name='right_6_Link'>
+          <pose>0.651197 0.136002 1.19481 1.57038 0.000302 -6e-06</pose>
+          <velocity>-6e-06 -2e-06 -0.014858 -0.015686 0.071906 -6e-06</velocity>
+          <acceleration>-0.000295 -0.000173 -0 6e-06 4e-06 0.001754</acceleration>
+          <wrench>-1e-05 -6e-06 -0 0 -0 0</wrench>
+        </link>
+        <link name='right_vacuum_gripper'>
+          <pose>0.651197 0.161002 1.1948 1.57038 0.000302 -6e-06</pose>
+          <velocity>-7e-06 -2e-06 -0.01525 -0.015686 0.071902 -6e-06</velocity>
+          <acceleration>-0.000184 -0.000147 -0 2e-06 7e-06 0.000842</acceleration>
+          <wrench>-0 -0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <model name='Box'>
+      <link name='link_3'>
+        <inertial>
+          <mass>0.008</mass>
+          <inertia>
+            <ixx>5.333e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>5.333e-05</iyy>
+            <iyz>0</iyz>
+            <izz>5.333e-05</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <pose>0 -0 0 0 -0 0</pose>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <enable_wind>0</enable_wind>
+        <visual name='visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <shader type='pixel'>
+              <normal_map>__default__</normal_map>
+            </shader>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.01 0.01 0.01 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose>-0.173115 1.10782 0 0 -0 0</pose>
+    </model>
+    <model name='BigBox'>
+      <link name='link_0'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <pose>0 0 0 0 -0 0</pose>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <visual name='visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <lighting>1</lighting>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+            <shader type='pixel'/>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>1</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose>-0.050792 0.3016 0.499995 0 1e-05 0</pose>
+    </model>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>0.340741 5.48656 1.57328 -0 0.18598 -1.82357</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

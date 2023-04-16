@@ -1,6 +1,11 @@
 <launch>
-  <include
-    file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <arg name="model" default="$(find xacro)/xacro '$(find gluon_2l4_6l3)/urdf/dual_arm_vacuum.xacro'"/>
+  <param name="robot_description" command="$(arg model)"/>
+  <!-- <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" /> -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find gluon_2l4_6l3)/world/without_arm.world"/>
+  </include>
   <node
     name="tf_footprint_base"
     pkg="tf"
@@ -10,7 +15,7 @@
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
-    args="-file $(find gluon)/urdf/gluon.urdf -urdf -model gluon"
+    args="-param robot_description -urdf -model dual_arm_vacuum"
     output="screen" />
   <node
     name="fake_joint_calibration"

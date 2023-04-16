@@ -388,6 +388,79 @@
             effort="30"
             velocity="3.14" />
         </joint>
+        <joint name="${LandR}_ee_fixed_joint" type="fixed">
+            <parent link="${LandR}_6_Link" />
+            <child link = "${LandR}_ee_link" />
+            <origin xyz="0 0 -0.01" rpy="0 0 0" />
+        </joint>
+        <link name="${LandR}_ee_link">
+            <inertial>
+                <origin
+                    xyz="0 0 0"
+                    rpy="0 0 0" />
+                <mass
+                    value="0.001" />
+                <inertia
+                    ixx="9.69578526103206E-06"
+                    ixy="-7.64383826654747E-09"
+                    ixz="-3.2515655925902E-09"
+                    iyy="1.02214035330215E-05"
+                    iyz="6.36682596346152E-09"
+                    izz="1.67442220589365E-05" />
+            </inertial>
+            <visual>
+                <geometry>
+                <box size="0.04 0.04 0.01"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 -0.005"/>
+            </visual>
+            <collision>
+                <geometry>
+                <box size="0.04 0.04 0.01"/>
+                </geometry>
+                <surface>
+                <friction>
+                    <ode>
+                    <mu>10</mu>
+                    <mu2>10</mu2>
+                    </ode>
+                </friction>
+                </surface>
+                <origin rpy="0 0 0" xyz="0 0 -0.005"/>
+            </collision>
+        </link>
+        <link name="${LandR}_vacuum_gripper">
+            <gravity>0</gravity>
+                <visual>
+                    <origin rpy="0 0 0" xyz="0 0 -0.005"/>
+                    <geometry>
+                    <cylinder radius="0.005" length="0.01"/>
+                    </geometry>
+                    <material name="">
+                        <color rgba="0.3 1 1 0.8"/>
+                    </material>
+                </visual>
+                <inertial>
+                    <origin rpy="0 0 0" xyz="0.000000 0.000000 -0.005"/>
+                    <mass value="0.0001"/>
+                    <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
+                </inertial>
+        </link>
+        <joint name="${LandR}_gripper_joint" type="revolute">
+            <axis xyz="0 0 1" />
+            <parent link="${LandR}_ee_link" />
+            <child link="${LandR}_vacuum_gripper" />
+            <origin rpy="3.14159 0 0" xyz="0 0 -0.02" />
+            <limit effort="50" velocity="50" lower="0" upper="0" />
+            <dynamics damping="0.0" friction="10"/>
+        </joint>
+        <gazebo>
+            <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper_modified.so">
+                <robotNamespace>/Walles/${LandR}_vacuum_gripper</robotNamespace>
+                <bodyName>${LandR}_vacuum_gripper</bodyName>
+                <topicName>grasping</topicName>
+            </plugin>
+        </gazebo>
         <gazebo reference="${LandR}_base_link">
                 <material>Gazebo/White</material>
         </gazebo>
@@ -418,223 +491,62 @@
         <transmission name="${LandR}_axis_joint_1_trans">
                 <type>transmission_interface/SimpleTransmission</type>
                 <joint name="${LandR}_axis_joint_1">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 </joint>
                 <actuator name="${LandR}_axis_joint_1_motor">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission>
         <transmission name="${LandR}_axis_joint_2_trans">
                 <type>transmission_interface/SimpleTransmission</type>
                 <joint name="${LandR}_axis_joint_2">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 </joint>
                 <actuator name="${LandR}_axis_joint_2_motor">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission>
         <transmission name="${LandR}_axis_joint_3_trans">
                 <type>transmission_interface/SimpleTransmission</type>
                 <joint name="${LandR}_axis_joint_3">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 </joint>
                 <actuator name="${LandR}_axis_joint_3_motor">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission>
         <transmission name="${LandR}_axis_joint_4_trans">
                 <type>transmission_interface/SimpleTransmission</type>
                 <joint name="${LandR}_axis_joint_4">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 </joint>
                 <actuator name="${LandR}_axis_joint_4_motor">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission>
         <transmission name="${LandR}_axis_joint_5_trans">
                 <type>transmission_interface/SimpleTransmission</type>
                 <joint name="${LandR}_axis_joint_5">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 </joint>
                 <actuator name="${LandR}_axis_joint_5_motor">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission>
         <transmission name="${LandR}_axis_joint_6_trans">
-              <type>transmission_interface/SimpleTransmission</type>
+                      <type>transmission_interface/SimpleTransmission</type>
               <joint name="${LandR}_axis_joint_6">
-                  <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
               </joint>
               <actuator name="${LandR}_axis_joint_6_motor">
-                  <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                   <mechanicalReduction>1</mechanicalReduction>
               </actuator>
           </transmission>
-        <joint name="${LandR}_ee_fixed_joint" type="fixed">
-        <parent link="${LandR}_6_Link" />
-        <child link = "${LandR}_ee_link" />
-        <origin xyz="0 0 0" rpy="0 0 0" />
-        </joint>
-        <link name="${LandR}_ee_link">
-        <collision>
-            <geometry>
-            <box size="0.01 0.01 0.01"/>
-            </geometry>
-            <surface>
-            <friction>
-                <ode>
-                <mu>10</mu>
-                <mu2>10</mu2>
-                </ode>
-            </friction>
-            </surface>
-            <origin rpy="0 0 0" xyz="-0.01 0 0"/>
-        </collision>
-        </link>
-        <link name="${LandR}_vacuum_gripper">
-        <gravity>0</gravity>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-            <cylinder radius="0.005" length="0.01"/>
-            </geometry>
-            <material name="transparent">
-            <color rgba="0 0 0 0"/>
-            </material>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
-            <mass value="0.0001"/>
-            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
-        </inertial>
-        </link>
-        <joint name="${LandR}_gripper_joint" type="revolute">
-        <axis xyz="1 0 0" />
-        <parent link="${LandR}_ee_link" />
-        <child link="${LandR}_vacuum_gripper" />
-        <origin rpy="0 1.5708 0" xyz="0.01 0.0125 0" />
-        <limit effort="50" velocity="50" lower="0" upper="0" />
-        <dynamics damping="0.0" friction="10"/>
-        </joint>
-        <gazebo>
-            <plugin name="gazebo_ros_vacuum_gripper" filename="libgazebo_ros_vacuum_gripper.so">
-                <robotNamespace>/${LandR}_gvacuum_gripper</robotNamespace>
-                <bodyName>vacuum_gripper</bodyName>
-                <topicName>grasping</topicName>
-                <maxForce>50</maxForce>
-                <maxDistance>0.05</maxDistance>
-                <minDistance>0.01</minDistance>
-            </plugin>
-        </gazebo>
-        <link name="${LandR}_vacuum_gripper1">
-        <gravity>0</gravity>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-            <cylinder radius="0.005" length="0.01"/>
-            </geometry>
-            <material name="transparent">
-            <color rgba="0 0 0 0"/>
-            </material>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
-            <mass value="0.0001"/>
-            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
-        </inertial>
-        </link>
-        <joint name="${LandR}_gripper_joint1" type="revolute">
-        <axis xyz="1 0 0" />
-        <parent link="${LandR}_ee_link" />
-        <child link="${LandR}_vacuum_gripper1" />
-        <origin rpy="0 1.5708 0" xyz="0.01 -0.0125 0" />
-        <limit effort="50" velocity="50" lower="0" upper="0" />
-        <dynamics damping="0.0" friction="10"/>
-        </joint>
-        <gazebo>
-            <plugin name="gazebo_ros_vacuum_gripper1" filename="libgazebo_ros_vacuum_gripper.so">
-                <robotNamespace>/${LandR}_gvacuum_gripper1</robotNamespace>
-                <bodyName>${LandR}_vacuum_gripper1</bodyName>
-                <topicName>grasping1</topicName>
-                <maxForce>50</maxForce>
-                <maxDistance>0.05</maxDistance>
-                <minDistance>0.01</minDistance>
-            </plugin>
-        </gazebo>
-        <link name="${LandR}_vacuum_gripper2">
-        <gravity>0</gravity>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-            <cylinder radius="0.005" length="0.01"/>
-            </geometry>
-            <material name="transparent">
-            <color rgba="0 0 0 0"/>
-            </material>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
-            <mass value="0.0001"/>
-            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
-        </inertial>
-        </link>
-        <joint name="${LandR}_gripper_joint2" type="revolute">
-        <axis xyz="1 0 0" />
-        <parent link="${LandR}_ee_link" />
-        <child link="${LandR}_vacuum_gripper2" />
-        <origin rpy="0 1.5708 0" xyz="0.01 0 0.0125" />
-        <limit effort="50" velocity="50" lower="0" upper="0" />
-        <dynamics damping="0.0" friction="10"/>
-        </joint>
-        <gazebo>
-            <plugin name="gazebo_ros_vacuum_gripper2" filename="libgazebo_ros_vacuum_gripper.so">
-                <robotNamespace>/${LandR}_gvacuum_gripper2</robotNamespace>
-                <bodyName>${LandR}_vacuum_gripper2</bodyName>
-                <topicName>grasping2</topicName>
-                <maxForce>50</maxForce>
-                <maxDistance>0.05</maxDistance>
-                <minDistance>0.01</minDistance>
-            </plugin>
-        </gazebo>
-        <link name="${LandR}_vacuum_gripper3">
-        <gravity>0</gravity>
-        <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
-            <geometry>
-            <cylinder radius="0.005" length="0.01"/>
-            </geometry>
-            <material name="transparent">
-            <color rgba="0 0 0 0"/>
-            </material>
-        </visual>
-        <inertial>
-            <origin rpy="0 0 0" xyz="0.000000 0.000000 0.000000"/>
-            <mass value="0.0001"/>
-            <inertia ixx="1e-08" ixy="0" ixz="0" iyy="1e-08" iyz="0" izz="1e-08"/>
-        </inertial>
-        </link>
-        <joint name="${LandR}_gripper_joint3" type="revolute">
-        <axis xyz="1 0 0" />
-        <parent link="${LandR}_ee_link" />
-        <child link="${LandR}_vacuum_gripper3" />
-        <origin rpy="0 1.5708 0" xyz="0.01 0 -0.0125" />
-        <limit effort="50" velocity="50" lower="0" upper="0" />
-        <dynamics damping="0.0" friction="10"/>
-        </joint>
-        <gazebo>
-            <plugin name="gazebo_ros_vacuum_gripper3" filename="libgazebo_ros_vacuum_gripper.so">
-                <robotNamespace>/${LandR}_gvacuum_gripper3</robotNamespace>
-                <bodyName>${LandR}_vacuum_gripper3</bodyName>
-                <topicName>grasping2</topicName>
-                <maxForce>50</maxForce>
-                <maxDistance>0.05</maxDistance>
-                <minDistance>0.01</minDistance>
-            </plugin>
-        </gazebo>
     </xacro:macro>
 </robot>
